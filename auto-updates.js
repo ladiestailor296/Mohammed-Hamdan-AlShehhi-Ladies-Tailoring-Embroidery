@@ -1,0 +1,1 @@
+// auto-updates.js placeholder
