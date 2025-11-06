@@ -1,1 +1,0 @@
-// whatsapp-alerts.js placeholder
