@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Our Products - Mohammed Hamdan AlShehhi Ladies Tailoring & Embroidery</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<h2>Our Collection / مجموعتنا</h2>
+
+<div id="product-slider" class="slider">
+  <div class="slide">
+    <img src="product1.png" alt="Jalabiya Gold Design">
+    <p>Jalabiya Gold Design - AED 450</p>
+  </div>
+  <div class="slide">
+    <img src="product2.png" alt="Classic Embroidered Abaya">
+    <p>Classic Embroidered Abaya - AED 380</p>
+  </div>
+  <div class="slide">
+    <img src="product3.png" alt="Luxury Modern Jalabiya">
+    <p>Luxury Modern Jalabiya - AED 520</p>
+  </div>
+</div>
+
+<!-- WhatsApp Button -->
+<a href="https://wa.me/971XXXXXXXXX" id="whatsapp-btn">Chat on WhatsApp 💬</a>
+
+<script>
+let currentIndex = 0;
+const slides = document.querySelectorAll('.slide');
+setInterval(() => {
+  slides[currentIndex].style.display = "none";
+  currentIndex = (currentIndex + 1) % slides.length;
+  slides[currentIndex].style.display = "block";
+}, 3000);
+</script>
+
+</body>
+</html>
