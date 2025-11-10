@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Chat Assistant | Mohammed Hamdan AlShehhi Tailoring</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .chat-box {
+      background: #fff;
+      width: 90%;
+      max-width: 500px;
+      margin: 50px auto;
+      border-radius: 15px;
+      padding: 15px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+    .chat-output {
+      height: 300px;
+      overflow-y: auto;
+      border: 1px solid #eee;
+      padding: 10px;
+      margin-bottom: 10px;
+      text-align: left;
+    }
+    input {
+      width: 80%;
+      padding: 10px;
+      border-radius: 10px;
+      border: 1px solid #ccc;
+    }
+    button {
+      padding: 10px 15px;
+      border: none;
+      border-radius: 10px;
+      background: #a500b8;
+      color: #fff;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <h1>🤖 AI Chat Assistant</h1>
+    <p>Ask in English or Arabic about tailoring, embroidery, or products</p>
+  </header>
+
+  <main>
+    <div class="chat-box">
+      <div class="chat-output" id="chatOutput">Welcome! 👋 How can I help you today?</div>
+      <input type="text" id="chatInput" placeholder="Type your message..." />
+      <button onclick="sendMessage()">Send</button>
+    </div>
+    <a href="index.html" class="btn">⬅ Back to Home</a>
+  </main>
+
+  <footer>
+    <p>© 2025 Mohammed Hamdan AlShehhi | AI Chat v29.9+</p>
+  </footer>
+
+  <script>
+    function sendMessage() {
+      const input = document.getElementById("chatInput");
+      const output = document.getElementById("chatOutput");
+      const userMsg = input.value.trim();
+      if (!userMsg) return;
+      const reply = userMsg.includes("price") || userMsg.includes("سعر")
+        ? "💬 Our Jalabiya prices start from AED 180. Custom embroidery available!"
+        : userMsg.includes("location") || userMsg.includes("الموقع")
+        ? "📍 We are located in Dubai, UAE. Google Maps link is on our homepage."
+        : "🤖 Thank you! Our team will reply to you soon.";
+
+      output.innerHTML += `<p><b>You:</b> ${userMsg}</p><p><b>AI:</b> ${reply}</p>`;
+      input.value = "";
+      output.scrollTop = output.scrollHeight;
+    }
+  </script>
+</body>
+</html>
