@@ -1,0 +1,25 @@
+function givePointsForLogin(userEmail, points = 10) {
+  const usersRef = firebase.firestore().collection('users');
+  usersRef.doc(userEmail).get().then(doc => {
+    if (doc.exists) {
+      usersRef.doc(userEmail).update({
+        points: firebase.firestore.FieldValue.increment(points)
+      });
+    } else {
+      usersRef.doc(userEmail).set({
+        name: userEmail.split('@')[0],
+        email: userEmail,
+        points: points,
+        createdAt: firebase.firestore.FieldValue.serverTimestamp()
+      });
+    }
+  }).catch(err => console.error('Points error:', err));
+}
+
+function awardSharePoints(email, points = 5){
+  if(!email) { alert('Login to earn points'); return; }
+  firebase.firestore().collection('users').doc(email)
+    .update({ points: firebase.firestore.FieldValue.increment(points)})
+    .then(()=> alert(`+${points} points awarded!`))
+    .catch(err => console.error(err));
+}
