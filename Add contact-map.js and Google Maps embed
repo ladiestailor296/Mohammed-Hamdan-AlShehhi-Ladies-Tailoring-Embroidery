@@ -1,0 +1,5 @@
+function initMap(){
+  const shop = {lat:25.2048, lng:55.2708};
+  const map = new google.maps.Map(document.getElementById('map'), { zoom:12, center: shop });
+  new google.maps.Marker({ position: shop, map: map, title: 'Mohammed Hamdan AlShehhi Shop' });
+}
