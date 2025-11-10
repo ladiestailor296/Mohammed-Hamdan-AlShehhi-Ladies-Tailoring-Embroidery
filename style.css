@@ -1,0 +1,65 @@
+/* Mohammed Hamdan AlShehhi Ladies Tailoring & Embroidery v29.9+ */
+
+body {
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(135deg, #f7f0ff, #fde6ff);
+  color: #333;
+  text-align: center;
+}
+
+.header {
+  background: linear-gradient(90deg, #a500b8, #ff66c4);
+  color: white;
+  padding: 20px;
+  border-bottom: 5px solid #e5a1ff;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+h1 {
+  margin: 0;
+  font-size: 1.8rem;
+}
+
+h2 {
+  color: #a500b8;
+  margin-top: 20px;
+}
+
+.btn {
+  display: inline-block;
+  background: #a500b8;
+  color: white;
+  text-decoration: none;
+  padding: 10px 20px;
+  margin: 10px;
+  border-radius: 30px;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.btn:hover {
+  background: #ff66c4;
+  transform: scale(1.05);
+}
+
+.info {
+  background: white;
+  margin: 30px auto;
+  padding: 20px;
+  border-radius: 15px;
+  width: 90%;
+  max-width: 600px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+footer {
+  background: #a500b8;
+  color: white;
+  padding: 10px;
+  font-size: 0.9rem;
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+}
