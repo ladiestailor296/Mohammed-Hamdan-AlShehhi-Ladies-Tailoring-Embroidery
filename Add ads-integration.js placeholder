@@ -1,0 +1,4 @@
+function initAds() {
+  console.log('Ads init placeholder - insert ad vendor scripts here');
+}
+document.addEventListener('DOMContentLoaded', initAds);
