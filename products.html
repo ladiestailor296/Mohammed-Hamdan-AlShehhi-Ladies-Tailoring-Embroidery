@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -34,14 +33,7 @@
 
     <!-- Product List -->
     <section class="product-list" id="products-container">
-      <!-- Sample Products 1–10 -->
-      ${Array.from({length:10}, (_, i) => `
-        <div class="product-item">
-          <img src="products/product${i+1}.png" alt="Product ${i+1}">
-          <video src="products/product${i+1}.mp4" muted loop></video>
-          <div class="product-3d" data-model="products/product${i+1}.glb"></div>
-        </div>
-      `).join('')}
+      <!-- Products will be loaded automatically -->
     </section>
 
     <!-- Admin Controls -->
@@ -67,29 +59,46 @@
   <script src="auto-editor.js"></script>
   <script>
     const productsContainer = document.getElementById('products-container');
-    let productCount = 10;
+    let productCount = 10; // initial products
 
-    // Add Product Automatically
-    document.getElementById('add-product').addEventListener('click', () => {
-      productCount++;
+    function createProductElement(index) {
       const productDiv = document.createElement('div');
       productDiv.classList.add('product-item');
       productDiv.innerHTML = `
-        <img src="products/product${productCount}.png" alt="Product ${productCount}">
-        <video src="products/product${productCount}.mp4" muted loop></video>
-        <div class="product-3d" data-model="products/product${productCount}.glb"></div>
+        <img src="products/product${index}.png" alt="Product ${index}">
+        <video src="products/product${index}.mp4" muted loop></video>
+        <div class="product-3d" data-model="products/product${index}.glb"></div>
       `;
-      productsContainer.appendChild(productDiv);
       adjustImage(productDiv.querySelector('img'));
       adjustVideo(productDiv.querySelector('video'));
       init3DModel(productDiv.querySelector('.product-3d'));
+      return productDiv;
+    }
+
+    // Load initial 10 products
+    for (let i = 1; i <= productCount; i++) {
+      productsContainer.appendChild(createProductElement(i));
+    }
+
+    // Manual Add Product
+    document.getElementById('add-product').addEventListener('click', () => {
+      productCount++;
+      productsContainer.appendChild(createProductElement(productCount));
     });
 
-    // Remove Last Product Manually
+    // Manual Remove Last Product
     document.getElementById('remove-product').addEventListener('click', () => {
-      if(productsContainer.lastElementChild) {
+      if (productsContainer.lastElementChild) {
         productsContainer.removeChild(productsContainer.lastElementChild);
         productCount--;
+      }
+    });
+
+    // Optional: Automatically add 2 more products on page load
+    window.addEventListener('load', () => {
+      for (let i = productCount + 1; i <= productCount + 2; i++) {
+        productsContainer.appendChild(createProductElement(i));
+        productCount++;
       }
     });
   </script>
