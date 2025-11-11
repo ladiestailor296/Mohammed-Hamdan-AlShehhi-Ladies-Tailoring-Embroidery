@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Website Completion Tracker</title>
+<style>
+  body { font-family: Arial, sans-serif; background:#f5f5f5; padding:20px; }
+  h1 { text-align:center; color:#333; }
+  table { width:100%; border-collapse: collapse; margin-top:20px; }
+  th, td { padding:10px; border:1px solid #ccc; text-align:left; }
+  th { background:#333; color:#fff; }
+  tr.completed { background:#d4edda; color:#155724; }
+  input[type=checkbox] { transform: scale(1.2); margin-right:10px; }
+</style>
+</head>
+<body>
+
+<h1>Website Completion Tracker</h1>
+
+<table id="tracker-table">
+  <thead>
+    <tr>
+      <th>Step</th>
+      <th>Task</th>
+      <th>Status</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td>Test Products Page Functionality (load 10 products automatically)</td>
+      <td><input type="checkbox"></td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>Test Add Product button (manual add)</td>
+      <td><input type="checkbox"></td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>Test Remove Last Product button (manual remove)</td>
+      <td><input type="checkbox"></td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>Verify auto-adjustment via auto-editor.js</td>
+      <td><input type="checkbox"></td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td>Check Featured Slider (first 4 products)</td>
+      <td><input type="checkbox"></td>
+    </tr>
+    <tr>
+      <td>6</td>
+      <td>Verify Ads Videos play correctly</td>
+      <td><input type="checkbox"></td>
+    </tr>
+    <tr>
+      <td>7</td>
+      <td>Test AI Chat button & popup</td>
+      <td><input type="checkbox"></td>
+    </tr>
+    <tr>
+      <td>8</td>
+      <td>Test AI Chat messages (English/Arabic)</td>
+      <td><input type="checkbox"></td>
+    </tr>
+    <tr>
+      <td>9</td>
+      <td>Upload all product images to /products/</td>
+      <td><input type="checkbox"></td>
+    </tr>
+    <tr>
+      <td>10</td>
+      <td>Upload all product videos to /products/</td>
+      <td><input type="checkbox"></td>
+    </tr>
+    <tr>
+      <td>11</td>
+      <td>Upload all 3D models to /products/</td>
+      <td><input type="checkbox"></td>
+    </tr>
+    <tr>
+      <td>12</td>
+      <td>Upload ads videos to /ads/</td>
+      <td><input type="checkbox"></td>
+    </tr>
+    <tr>
+      <td>13</td>
+      <td>Open toolkit.html and verify links</td>
+      <td><input type="checkbox"></td>
+    </tr>
+    <tr>
+      <td>14</td>
+      <td>Test manual product add/remove in toolkit</td>
+      <td><input type="checkbox"></td>
+    </tr>
+    <tr>
+      <td>15</td>
+      <td>Verify auto-adjustments for newly uploaded products</td>
+      <td><input type="checkbox"></td>
+    </tr>
+    <tr>
+      <td>16</td>
+      <td>Test multilingual toggle (Arabic ↔ English)</td>
+      <td><input type="checkbox"></td>
+    </tr>
+    <tr>
+      <td>17</td>
+      <td>Test responsiveness (desktop, tablet, mobile)</td>
+      <td><input type="checkbox"></td>
+    </tr>
+    <tr>
+      <td>18</td>
+      <td>Commit all assets & code to GitHub</td>
+      <td><input type="checkbox"></td>
+    </tr>
+    <tr>
+      <td>19</td>
+      <td>Deploy to GitHub Pages</td>
+      <td><input type="checkbox"></td>
+    </tr>
+    <tr>
+      <td>20</td>
+      <td>Verify live site: products page, AI chat, auto-adjustments</td>
+      <td><input type="checkbox"></td>
+    </tr>
+  </tbody>
+</table>
+
+<script>
+const table = document.getElementById('tracker-table');
+table.addEventListener('change', (e) => {
+  if(e.target.tagName === 'INPUT' && e.target.type === 'checkbox') {
+    const row = e.target.closest('tr');
+    if(e.target.checked) row.classList.add('completed');
+    else row.classList.remove('completed');
+  }
+});
+</script>
+
+</body>
+</html>
