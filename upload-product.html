@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Upload New Product</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<h1>Upload New Product</h1>
+
+<form id="product-upload-form">
+  <label>Product Name:</label>
+  <input type="text" id="product-name" placeholder="Product 1" required>
+
+  <label>Image File (.png/.jpg):</label>
+  <input type="file" id="product-image" accept=".png,.jpg" required>
+
+  <label>Video File (.mp4):</label>
+  <input type="file" id="product-video" accept=".mp4">
+
+  <label>3D Model File (.glb/.gltf):</label>
+  <input type="file" id="product-3d" accept=".glb,.gltf">
+
+  <button type="submit">Upload Product</button>
+</form>
+
+<div id="status"></div>
+
+<script src="auto-editor.js"></script>
+<script>
+const form = document.getElementById('product-upload-form');
+const status = document.getElementById('status');
+
+form.addEventListener('submit', async (e) => {
+  e.preventDefault();
+
+  const name = document.getElementById('product-name').value;
+  const image = document.getElementById('product-image').files[0];
+  const video = document.getElementById('product-video').files[0];
+  const model = document.getElementById('product-3d').files[0];
+
+  if (!image) {
+    status.textContent = "Image is required!";
+    return;
+  }
+
+  // Simulate upload (GitHub doesn't allow direct file writes from browser)
+  // In practice, you upload files manually or via Firebase/Server
+  status.textContent = `Product "${name}" ready! Files uploaded: ${image.name}${video ? ', ' + video.name : ''}${model ? ', ' + model.name : ''}`;
+
+  // Auto-Editor will automatically adjust after files are added to products.html
+});
+</script>
+</body>
+</html>
