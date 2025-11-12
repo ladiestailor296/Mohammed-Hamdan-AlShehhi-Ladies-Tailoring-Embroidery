@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ultimate Website Tracker & Deployment Checklist</title>
+<style>
+  body { font-family: Arial, sans-serif; background: #f5f5f5; padding: 20px; }
+  h1 { text-align: center; color: #333; margin-bottom: 10px; }
+  .section { background: #fff; padding: 15px; border-radius: 10px; margin-bottom: 20px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);}
+  table { width: 100%; border-collapse: collapse; margin-top: 10px; }
+  th, td { padding: 10px; border: 1px solid #ccc; text-align: left; }
+  th { background: #333; color: #fff; }
+  tr.completed { background:#d4edda; color:#155724; }
+  input[type=checkbox] { transform: scale(1.2); margin-right: 10px; cursor: pointer; }
+  textarea { width: 100%; border-radius: 5px; padding:5px; margin-top:5px; }
+  #progress-container { background:#ddd; width:100%; height:25px; border-radius:5px; margin-bottom:20px; }
+  #progress-bar { height:100%; width:0%; background:#4caf50; text-align:center; color:#fff; line-height:25px; border-radius:5px; }
+  #search-input { width:100%; padding:10px; margin-bottom:10px; border-radius:5px; border:1px solid #ccc; }
+  #export-btn { margin-bottom:20px; padding:10px 15px; background:#007bff; color:#fff; border:none; border-radius:5px; cursor:pointer; }
+</style>
+</head>
+<body>
+
+<h1>Ultimate Website Tracker & Deployment Checklist</h1>
+
+<input type="text" id="search-input" placeholder="Search tasks or sections...">
+<div id="progress-container"><div id="progress-bar">0%</div></div>
+<button id="export-btn">Export as CSV</button>
+
+<!-- Sections -->
+
+<div class="section" data-section="GitHub Pages Deployment">
+<h2>1️⃣ GitHub Pages Deployment</h2>
+<table>
+<tbody>
+<tr data-task="Repo settings & source"><td><input type="checkbox"><span>Repo settings → Pages → main branch/root folder</span><textarea placeholder="Notes..."></textarea></td></tr>
+<tr data-task="Index.html root"><td><input type="checkbox"><span>Ensure index.html exists in root</span><textarea placeholder="Notes..."></textarea></td></tr>
+<tr data-task="Push latest changes"><td><input type="checkbox"><span>Push all latest changes</span><textarea placeholder="Notes..."></textarea></td></tr>
+<tr data-task="Open live URL"><td><input type="checkbox"><span>Open live URL & verify no 404</span><textarea placeholder="Notes..."></textarea></td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="section" data-section="Products Page">
+<h2>2️⃣ Products Page</h2>
+<table>
+<tbody>
+<tr data-task="10 products load"><td><input type="checkbox"><span>10 products load automatically</span><textarea placeholder="Notes..."></textarea></td></tr>
+<tr data-task="Add Product button"><td><input type="checkbox"><span>Test Add Product button (manual)</span><textarea placeholder="Notes..."></textarea></td></tr>
+<tr data-task="Remove Last Product"><td><input type="checkbox"><span>Test Remove Last Product button (manual)</span><textarea placeholder="Notes..."></textarea></td></tr>
+<tr data-task="Auto-adjustment"><td><input type="checkbox"><span>Verify auto-adjustment via auto-editor.js</span><textarea placeholder="Notes..."></textarea></td></tr>
+<tr data-task="Featured Slider"><td><input type="checkbox"><span>Check Featured Slider (first 4 products)</span><textarea placeholder="Notes..."></textarea></td></tr>
+<tr data-task="Responsive sliders"><td><input type="checkbox"><span>Verify sliders on desktop, tablet, mobile</span><textarea placeholder="Notes..."></textarea></td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="section" data-section="AI Chat">
+<h2>3️⃣ AI Chat</h2>
+<table>
+<tbody>
+<tr data-task="AI Chat button"><td><input type="checkbox"><span>AI Chat button opens/closes popup</span><textarea placeholder="Notes..."></textarea></td></tr>
+<tr data-task="English chat"><td><input type="checkbox"><span>Test AI chat messages (English)</span><textarea placeholder="Notes..."></textarea></td></tr>
+<tr data-task="Arabic chat"><td><input type="checkbox"><span>Test AI chat messages (Arabic)</span><textarea placeholder="Notes..."></textarea></td></tr>
+<tr data-task="Chat scroll"><td><input type="checkbox"><span>Chat scroll works</span><textarea placeholder="Notes..."></textarea></td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="section" data-section="Toolkit Page">
+<h2>4️⃣ Toolkit Page</h2>
+<table>
+<tbody>
+<tr data-task="Toolkit links"><td><input type="checkbox"><span>Open toolkit.html and verify links</span><textarea placeholder="Notes..."></textarea></td></tr>
+<tr data-task="Manual add/remove"><td><input type="checkbox"><span>Manual product add/remove works</span><textarea placeholder="Notes..."></textarea></td></tr>
+<tr data-task="Auto adjustments"><td><input type="checkbox"><span>Auto-adjustments apply for new products</span><textarea placeholder="Notes..."></textarea></td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="section" data-section="Ads & Monetization">
+<h2>5️⃣ Ads & Monetization</h2>
+<table>
+<tbody>
+<tr data-task="Google Ads"><td><input type="checkbox"><span>Google Ads added</span><textarea placeholder="Notes..."></textarea></td></tr>
+<tr data-task="Social Ads"><td><input type="checkbox"><span>TikTok, Snapchat, Instagram, Facebook, YouTube Ads added</span><textarea placeholder="Notes..."></textarea></td></tr>
+<tr data-task="Ads display"><td><input type="checkbox"><span>Ads display correctly</span><textarea placeholder="Notes..."></textarea></td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="section" data-section="Social Media & Contact">
+<h2>6️⃣ Social Media & Contact</h2>
+<table>
+<tbody>
+<tr data-task="All social links"><td><input type="checkbox"><span>All social media links added</span><textarea placeholder="Notes..."></textarea></td></tr>
+<tr data-task="WhatsApp button"><td><input type="checkbox"><span>WhatsApp button works</span><textarea placeholder="Notes..."></textarea></td></tr>
+<tr data-task="Google Maps"><td><input type="checkbox"><span>Google Maps integration works</span><textarea placeholder="Notes..."></textarea></td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="section" data-section="Multilingual Support">
+<h2>7️⃣ Multilingual Support</h2>
+<table>
+<tbody>
+<tr data-task="English-Arabic toggle"><td><input type="checkbox"><span>English ↔ Arabic toggle works</span><textarea placeholder="Notes..."></textarea></td></tr>
+<tr data-task="Text updates"><td><input type="checkbox"><span>All text updates correctly</span><textarea placeholder="Notes..."></textarea></td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="section" data-section="Deployment & Verification">
+<h2>8️⃣ Deployment & Verification</h2>
+<table>
+<tbody>
+<tr data-task="Commit code"><td><input type="checkbox"><span>Commit all assets & code to GitHub</span><textarea placeholder="Notes..."></textarea></td></tr>
+<tr data-task="Deploy GitHub Pages"><td><input type="checkbox"><span>Deploy website to GitHub Pages</span><textarea placeholder="Notes..."></textarea></td></tr>
+<tr data-task="Verify live site"><td><input type="checkbox"><span>Live website verified (products, AI chat, sliders, maps, ads)</span><textarea placeholder="Notes..."></textarea></td></tr>
+</tbody>
+</table>
+</div>
+
+<script>
+const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+const progressBar = document.getElementById('progress-bar');
+const searchInput = document.getElementById('search-input');
+const exportBtn = document.getElementById('export-btn');
+
+checkboxes.forEach(cb => {
+  const row = cb.closest('tr');
+  const notes = row.querySelector('textarea');
+  const taskKey = row.dataset.task;
+  if(localStorage.getItem(taskKey+'_checked')==='true') cb.checked=true;
+  if(localStorage.getItem(taskKey+'_notes')) notes.value=localStorage.getItem(taskKey+'_notes');
+  updateRow(cb);
+});
+
+checkboxes.forEach(cb => cb.addEventListener('change', ()=>{
+  const row = cb.closest('tr'); 
+  const taskKey = row.dataset.task;
+  localStorage.setItem(taskKey+'_checked', cb.checked);
+  updateRow(cb);
+  updateProgress();
+}));
+
+document.querySelectorAll('textarea').forEach(ta => ta.addEventListener('input', ()=>{
+  const taskKey = ta.closest('tr').dataset.task;
+  localStorage.setItem(taskKey+'_notes', ta.value);
+}));
+
+function updateRow(cb){ 
+  const row = cb.closest('tr'); 
+  cb.checked ? row.classList.add('completed') : row.classList.remove('completed'); 
+}
+
+function updateProgress(){ 
+  const total = checkboxes.length;
+  const completed = document.querySelectorAll('input[type="checkbox"]:checked').length;
+  const percent = Math.round((completed/total)*100);
+  progressBar.style.width = percent+'%';
+  progressBar.textContent = percent+'%';
+}
+
+updateProgress();
+
+searchInput.addEventListener('input', ()=>{
+  const filter = searchInput.value.toLowerCase();
+  document.querySelectorAll('.section').forEach(section=>{
+    let showSection = false;
+    section.querySelectorAll('tr').forEach(tr=>{
+      tr.style.display = tr.dataset.task.toLowerCase().includes(filter) ? '' : 'none';
+      if(tr.style.display != 'none') showSection = true;
+    });
+    section.style.display = showSection ? '' : 'none';
+  });
+});
+
+exportBtn.addEventListener('click', ()=>{
+  let csv = 'Section,Task,Completed,Notes\n';
+  document.querySelectorAll('.section').forEach(section=>{
+    const secName = section.dataset.section;
+    section.querySelectorAll('tr').forEach(tr=>{
+      const taskName = tr.dataset.task;
+      const completed = tr.querySelector('input[type="checkbox"]').checked ? 'Yes' : 'No';
+      const notes = tr.querySelector('textarea').value.replace(/\n/g,' ');
+      csv += `"${secName}","${taskName}","${completed}","${notes}"\n`;
+    });
+  });
+  const blob = new Blob([csv], {type:'text/csv'});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a'); a.href = url; a.download = 'ultimate_website_tracker.csv'; a.click();
+  URL.revokeObjectURL(url);
+});
+</script>
+
+</body>
+</html>
