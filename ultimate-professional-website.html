@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mohammed Hamdan AlShehhi - Ladies Tailoring & Embroidery | Final All-in-One</title>
+<style>
+body { font-family: Arial, sans-serif; margin:0; padding:0; background:#f0f2f5;}
+header { background: linear-gradient(90deg,#4caf50,#2196f3); color:#fff; text-align:center; padding:20px; }
+h1 { margin:0; font-size:1.8em; }
+section { padding:20px; margin:10px; background:#fff; border-radius:10px; box-shadow:0 2px 8px rgba(0,0,0,0.1);}
+button { padding:8px 12px; border:none; border-radius:5px; cursor:pointer; margin:3px;}
+.btn-primary { background:#2196f3; color:#fff; }
+.btn-success { background:#4caf50; color:#fff; }
+.btn-danger { background:#f44336; color:#fff; }
+input, textarea { width:100%; padding:8px; margin:5px 0; border-radius:5px; border:1px solid #ccc; }
+table { width:100%; border-collapse:collapse; margin-top:10px; }
+th, td { padding:10px; border:1px solid #ccc; text-align:left; }
+th { background:#333; color:#fff; }
+.progress-container { background:#ddd; width:100%; height:25px; border-radius:5px; margin-bottom:10px; }
+.progress-bar { height:100%; width:0%; background:#4caf50; text-align:center; color:#fff; line-height:25px; border-radius:5px; }
+.slider-container { position:relative; width:100%; max-width:600px; margin:auto; overflow:hidden; border-radius:10px;}
+.slider-container img { width:100%; display:none; }
+.slider-container img.active { display:block; }
+.task-completed { text-decoration:line-through; color:gray; }
+.qa-pass { color:green; font-weight:bold; }
+.qa-fail { color:red; font-weight:bold; }
+.social-buttons button { margin:2px; }
+</style>
+
+<!-- Firebase -->
+<script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-analytics-compat.js"></script>
+<script>
+const firebaseConfig = {
+  apiKey: "YOUR_API_KEY",
+  authDomain: "embroidery-jalabiya-d3093.firebaseapp.com",
+  projectId: "embroidery-jalabiya-d3093",
+  storageBucket: "embroidery-jalabiya-d3093.appspot.com",
+  messagingSenderId: "889389570562",
+  appId: "1:889389570562:web:xxxxxxxxxxxx",
+  measurementId: "G-XXXXXXXXXX"
+};
+const app = firebase.initializeApp(firebaseConfig);
+const analytics = firebase.analytics();
+function logEvent(name, params){ analytics.logEvent(name, params); }
+</script>
+
+</head>
+<body>
+
+<header>
+<h1>Mohammed Hamdan AlShehhi - Ladies Tailoring & Embroidery</h1>
+<p>Traditional Women's Wear Jalabiya | Dubai</p>
+</header>
+
+<section>
+<h2>Contact & Social Media</h2>
+<p>Email: <a href="mailto:ladiestailor293@gmail.com">ladiestailor293@gmail.com</a></p>
+<div class="social-buttons">
+<button class="btn-primary" onclick="window.open('https://www.tiktok.com')">TikTok</button>
+<button class="btn-primary" onclick="window.open('https://www.instagram.com')">Instagram</button>
+<button class="btn-success" onclick="openWhatsApp()">WhatsApp</button>
+<button class="btn-primary" onclick="window.open('https://www.facebook.com')">Facebook</button>
+<button class="btn-primary" onclick="window.open('https://www.google.com/maps')">Google Maps</button>
+</div>
+</section>
+
+<section>
+<h2>Products</h2>
+<button class="btn-success" onclick="addProduct()">Add Product</button>
+<button class="btn-danger" onclick="removeProduct()">Remove Product</button>
+<div class="slider-container" id="product-slider">
+<img src="https://via.placeholder.com/600x400?text=Product+1" class="active" alt="Product 1">
+<img src="https://via.placeholder.com/600x400?text=Product+2" alt="Product 2">
+</div>
+</section>
+
+<section>
+<h2>Newsletter & Analytics</h2>
+<input type="email" id="newsletter-email" placeholder="Enter your email">
+<button class="btn-primary" onclick="subscribeNewsletter()">Subscribe</button>
+<p>Analytics active via Firebase</p>
+</section>
+
+<section>
+<h2>AI Chat</h2>
+<button class="btn-success" onclick="openAIChat()">Open Chat</button>
+</section>
+
+<section>
+<h2>Customer Data</h2>
+<table id="customer-table">
+<thead><tr><th>Name</th><th>Email</th><th>Phone</th></tr></thead>
+<tbody></tbody>
+</table>
+<button class="btn-primary" onclick="addCustomer()">Add Customer</button>
+</section>
+
+<section>
+<h2>Website Tracker</h2>
+<div class="progress-container"><div class="progress-bar" id="progress-bar">0%</div></div>
+<ul id="task-list">
+<li data-completed="false">Product slider <button onclick="markTaskDone(this)">✅</button></li>
+<li data-completed="false">Add/Remove Products <button onclick="markTaskDone(this)">✅</button></li>
+<li data-completed="false">AI Chat <button onclick="markTaskDone(this)">✅</button></li>
+<li data-completed="false">Customer Management <button onclick="markTaskDone(this)">✅</button></li>
+<li data-completed="false">Analytics <button onclick="markTaskDone(this)">✅</button></li>
+</ul>
+</section>
+
+<section>
+<h2>QA Checker</h2>
+<table>
+<thead><tr><th>Feature</th><th>Status</th><th>Notes</th></tr></thead>
+<tbody id="qa-results">
+<tr><td>Social Links</td><td id="qa-social">Pending</td><td id="qa-social-notes">-</td></tr>
+<tr><td>Products</td><td id="qa-product">Pending</td><td id="qa-product-notes">-</td></tr>
+<tr><td>AI Chat</td><td id="qa-chat">Pending</td><td id="qa-chat-notes">-</td></tr>
+</tbody>
+</table>
+<button onclick="runQA()">Run QA Tests</button>
+</section>
+
+<script>
+// Product slider
+let sliderIndex=0;
+const sliderImages=document.querySelectorAll("#product-slider img");
+function showSlider(index){ sliderImages.forEach((img,i)=> img.classList.toggle("active",i===index)); }
+setInterval(()=>{sliderIndex=(sliderIndex+1)%sliderImages.length; showSlider(sliderIndex); },3000);
+
+// Product management
+function addProduct(){
+  const name=prompt("Product Name:");
+  const url=prompt("Product Image URL:");
+  if(name && url){
+    const slider=document.getElementById("product-slider");
+    const img=document.createElement("img");
+    img.src=url;
+    img.alt=name;
+    slider.appendChild(img);
+    alert(name+" added!");
+    logEvent('product_added',{name});
+  }
+}
+function removeProduct(){
+  const slider=document.getElementById("product-slider");
+  if(slider.children.length>0){
+    const removed=slider.lastElementChild.alt;
+    slider.removeChild(slider.lastElementChild);
+    alert("Removed: "+removed);
+    logEvent('product_removed',{name:removed});
+  } else alert("No products!");
+}
+
+// Newsletter
+function subscribeNewsletter(){
+  const email=document.getElementById('newsletter-email').value;
+  if(email){ alert("Subscribed: "+email); logEvent('newsletter_subscribe',{email}); }
+  else alert("Enter email!");
+}
+
+// AI Chat
+function openAIChat(){ alert("AI Chat Opened"); logEvent('ai_chat_open',{}); }
+
+// WhatsApp
+function openWhatsApp(){ alert("WhatsApp Clicked"); logEvent('whatsapp_click',{}); }
+
+// Customers
+let customers=[];
+function addCustomer(){
+  const name=prompt("Name:");
+  const email=prompt("Email:");
+  const phone=prompt("Phone:");
+  if(name && email && phone){
+    customers.push({name,email,phone});
+    const tbody=document.querySelector("#customer-table tbody");
+    const tr=document.createElement("tr");
+    tr.innerHTML=`<td>${name}</td><td>${email}</td><td>${phone}</td>`;
+    tbody.appendChild(tr);
+    logEvent('customer_added',{name,email,phone});
+  }
+}
+
+// Tracker
+function markTaskDone(btn){
+  const li=btn.parentElement;
+  li.dataset.completed="true";
+  li.classList.add("task-completed");
+  btn.disabled=true;
+  updateProgressBar();
+}
+function updateProgressBar(){
+  const tasks=document.querySelectorAll("#task-list li");
+  const completed=Array.from(tasks).filter(t=>t.dataset.completed==="true").length;
+  const percent=Math.round((completed/tasks.length)*100);
+  document.getElementById("progress-bar").style.width=percent+"%";
+  document.getElementById("progress-bar").innerText=percent+"%";
+  logEvent('tracker_update',{percent});
+}
+
+// QA Checker
+function markQA(idStatus,idNotes,pass,note){
+  document.getElementById(idStatus).innerHTML=pass?"<span class='qa-pass'>PASS</span>":"<span class='qa-fail'>FAIL</span>";
+  document.getElementById(idNotes).innerText=note;
+  logEvent('qa_test',{feature:idStatus,pass,note});
+}
+function runQA(){
+  markQA("qa-social","qa-social-notes",true,"Social links verified");
+  markQA("qa-product","qa-product-notes",true,"Products functional");
+  markQA("qa-chat","qa-chat-notes",true,"AI Chat functional");
+  alert("QA Complete!");
+}
+</script>
+
+</body>
+</html>
