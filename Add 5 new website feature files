@@ -1,0 +1,68 @@
+import subprocess
+import os
+
+# =========================
+# Configuration
+# =========================
+BRANCH = "main"
+AUTO_COMMIT_MESSAGE = "Auto-sync: Updated website files"
+
+# =========================
+# Helper Function
+# =========================
+def run_command(cmd):
+    print(f"Running: {cmd}")
+    result = subprocess.run(cmd, shell=True, capture_output=True, text=True)
+    if result.returncode != 0:
+        print(f"Error: {result.stderr}")
+    else:
+        print(result.stdout)
+    return result.returncode
+
+# =========================
+# Main Flow
+# =========================
+def main():
+    print("=== Auto & Manual Git Sync Script ===")
+    
+    # 1️⃣ Get all changed files
+    print("\nChecking git status...")
+    run_command("git status")
+    
+    # 2️⃣ Ask user for mode
+    mode = input("\nChoose mode: [A]uto / [M]anual: ").strip().lower()
+    
+    if mode == "a":
+        print("\nAuto mode selected.")
+        # Stage all changes
+        run_command("git add .")
+        # Commit
+        run_command(f'git commit -m "{AUTO_COMMIT_MESSAGE}"')
+        # Push
+        run_command(f"git push origin {BRANCH}")
+        print("\n✅ Auto-sync completed successfully!")
+    
+    elif mode == "m":
+        print("\nManual mode selected.")
+        # List all changed files
+        print("Files changed/added:")
+        os.system("git status -s")
+        
+        files = input("\nEnter files to commit (separated by commas) or 'all': ").strip()
+        if files.lower() == "all":
+            run_command("git add .")
+        else:
+            for f in [f.strip() for f in files.split(",")]:
+                run_command(f"git add {f}")
+        
+        # Custom commit message
+        message = input("Enter commit message: ").strip()
+        run_command(f'git commit -m "{message}"')
+        run_command(f"git push origin {BRANCH}")
+        print("\n✅ Manual commit & push completed successfully!")
+    
+    else:
+        print("❌ Invalid mode selected. Exiting.")
+
+if __name__ == "__main__":
+    main()
