@@ -1,0 +1,47 @@
+# Mohammed Hamdan AlShehhi - Ladies Tailoring & Embroidery
+
+**Traditional Women's Wear Jalabiya | Dubai**
+
+---
+
+## Project Overview
+
+This repository contains the complete professional all-in-one website for **Mohammed Hamdan AlShehhi**, including:  
+
+- Unlimited products display with automatic image adjustments and 3D viewing  
+- AI chat integration  
+- Customer management and newsletter subscription  
+- Website completion tracker and QA checker  
+- Firebase analytics  
+- Fully automated scripts for image editing, Git commits, and multi-file management  
+
+---
+
+## Features
+
+### 1. Web Pages
+- `index.html` – Homepage with social media links and product overview  
+- `products.html` – Add/Remove products with 3D/slider view  
+- `tracker.html` – Website task completion tracker  
+- `ultimate-website-final-launch.html` – All-in-one final launch page  
+
+### 2. JS & Python Automation Scripts
+- `auto-editor.js` / `auto-editor-v2.js` – Automatic image adjustments  
+- `auto-commit-all-v2.py` – Git commit automation  
+- `multi-file-auto-commit.py` / `multi-file-commit.py` – Multi-file Git operations  
+- `git_auto_commit_scalable.py` – Scalable Git automation  
+- `git_commit_gui_pro.py` – GUI tool for Git commit  
+- `newfile_products_update.py` – Batch product updates  
+
+### 3. Styles & Config
+- `style.css` – Professional website styling  
+- `CNAME` – Custom domain configuration  
+- `index.html` – Root homepage  
+
+---
+
+## How to Use
+
+1. Clone the repository:  
+```bash
+git clone https://github.com/ladiestailor296/Mohammed-Hamdan-AlShehhi-Ladies-Tailoring-Embroidery.git
