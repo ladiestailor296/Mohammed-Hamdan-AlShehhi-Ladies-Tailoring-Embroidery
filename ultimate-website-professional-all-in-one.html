@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mohammed Hamdan AlShehhi - Ladies Tailoring & Embroidery</title>
+<style>
+/* --- Embedded CSS --- */
+body { font-family: Arial, sans-serif; margin:0; padding:0; background:#f5f5f5;}
+header { background: linear-gradient(90deg,#4caf50,#2196f3); color:#fff; text-align:center; padding:20px;}
+h1 { margin:0; font-size:1.8em;}
+section { padding:20px; margin:10px auto; background:#fff; border-radius:10px; max-width:1200px; box-shadow:0 2px 8px rgba(0,0,0,0.1);}
+button { padding:8px 15px; border:none; border-radius:5px; cursor:pointer; margin:5px; font-weight:bold;}
+.btn-primary { background:#2196f3; color:#fff; }
+.btn-success { background:#4caf50; color:#fff; }
+.btn-danger { background:#f44336; color:#fff; }
+input, textarea { width:100%; padding:8px; margin:5px 0; border-radius:5px; border:1px solid #ccc; }
+table { width:100%; border-collapse:collapse; margin-top:10px;}
+th, td { padding:10px; border:1px solid #ccc; text-align:left;}
+th { background:#333; color:#fff;}
+.progress-container { background:#ddd; width:100%; height:25px; border-radius:5px; margin-bottom:10px;}
+.progress-bar { height:100%; width:0%; background:#4caf50; text-align:center; color:#fff; line-height:25px; border-radius:5px;}
+.slider-container { position:relative; width:100%; max-width:600px; margin:auto; overflow:hidden; border-radius:10px;}
+.slider-container img { width:100%; display:none;}
+.slider-container img.active { display:block;}
+.product-image { transition: all 0.3s ease; }
+.task-completed { text-decoration:line-through; color:gray;}
+.qa-pass { color:green; font-weight:bold;}
+.qa-fail { color:red; font-weight:bold;}
+.social-buttons button { margin:2px;}
+</style>
+</head>
+<body>
+
+<header>
+<h1>Mohammed Hamdan AlShehhi - Ladies Tailoring & Embroidery</h1>
+<p>Traditional Women's Wear Jalabiya | Dubai</p>
+</header>
+
+<section>
+<h2>Contact & Social Media</h2>
+<p>Email: <a href="mailto:ladiestailor293@gmail.com">ladiestailor293@gmail.com</a></p>
+<div class="social-buttons">
+<button class="btn-primary" onclick="window.open('https://www.tiktok.com')">TikTok</button>
+<button class="btn-primary" onclick="window.open('https://www.instagram.com')">Instagram</button>
+<button class="btn-success" onclick="openWhatsApp()">WhatsApp</button>
+<button class="btn-primary" onclick="window.open('https://www.facebook.com')">Facebook</button>
+<button class="btn-primary" onclick="window.open('https://www.google.com/maps')">Google Maps</button>
+</div>
+</section>
+
+<section>
+<h2>Products</h2>
+<button class="btn-success" onclick="addProductPrompt()">Add Product</button>
+<button class="btn-danger" onclick="removeLastProduct()">Remove Last Product</button>
+<div class="slider-container" id="product-slider"></div>
+</section>
+
+<section>
+<h2>Newsletter</h2>
+<input type="email" id="newsletter-email" placeholder="Enter your email">
+<button class="btn-primary" onclick="subscribeNewsletter()">Subscribe</button>
+</section>
+
+<section>
+<h2>Website Tracker</h2>
+<div class="progress-container"><div class="progress-bar" id="progress-bar">0%</div></div>
+<button class="btn-success" onclick="completeTask()">Complete Task</button>
+</section>
+
+<script>
+// ----- Social WhatsApp -----
+function openWhatsApp(){ alert("WhatsApp Clicked!"); }
+
+// ----- Newsletter -----
+function subscribeNewsletter(){
+  const email=document.getElementById('newsletter-email').value;
+  if(email){ alert("Subscribed: "+email); } else alert("Enter valid email!");
+}
+
+// ----- Products Management -----
+let products = [];
+function addProduct(name,imgUrl,angles=[]){
+    const product={name,imgUrl,angles};
+    products.push(product);
+    renderProducts();
+    adjustAllProducts();
+}
+function addProductPrompt(){
+    const name = prompt("Product Name:");
+    const url = prompt("Product Image URL:");
+    if(name && url) addProduct(name,url);
+}
+function removeLastProduct(){
+    if(products.length>0){
+        const removed = products.pop();
+        renderProducts();
+        alert("Removed: "+removed.name);
+    } else alert("No products to remove!");
+}
+
+// Render products
+function renderProducts(){
+    const container=document.getElementById('product-slider');
+    container.innerHTML='';
+    products.forEach(p=>{
+        const img=document.createElement('img');
+        img.src=p.imgUrl;
+        img.alt=p.name;
+        img.className='product-image active';
+        container.appendChild(img);
+        if(p.angles.length>0) rotate3DProduct(img,p.angles);
+    });
+}
+
+// ----- Auto-adjust images -----
+function autoAdjustImage(img,brightness=1.2,contrast=1.1,saturation=1.3){
+    img.style.filter=`brightness(${brightness}) contrast(${contrast}) saturate(${saturation})`;
+}
+function adjustAllProducts(){
+    document.querySelectorAll('.product-image').forEach(img=>autoAdjustImage(img));
+}
+
+// ----- 3D Product Viewer -----
+function rotate3DProduct(img,angles){
+    let i=0;
+    setInterval(()=>{ img.src = angles[i % angles.length]; i++; },200);
+}
+
+// ----- Progress Tracker -----
+let progress=0;
+function completeTask(){
+    progress=Math.min(100,progress+20);
+    document.getElementById('progress-bar').style.width=progress+'%';
+    document.getElementById('progress-bar').innerText=progress+'%';
+}
+
+// ----- Example Products -----
+addProduct('Jalabiya 1','https://via.placeholder.com/600x400?text=Jalabiya+1',['https://via.placeholder.com/600x400?text=Jalabiya+1a','https://via.placeholder.com/600x400?text=Jalabiya+1b']);
+addProduct('Jalabiya 2','https://via.placeholder.com/600x400?text=Jalabiya+2');
+</script>
+
+</body>
+</html>
