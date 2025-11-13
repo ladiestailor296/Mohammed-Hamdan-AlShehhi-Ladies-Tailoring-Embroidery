@@ -1,0 +1,48 @@
+import subprocess
+
+# =========================
+# Configuration
+# =========================
+FILES_TO_COMMIT = [
+    "newsletter-signup.html",
+    "newsletter-handler.js",
+    "analytics-tracker.js",
+    "faq.html",
+    "support-chat.js"
+]
+
+BRANCH = "main"
+COMMIT_MESSAGE = "Add newsletter, analytics, FAQ, and support chat pages & scripts"
+
+# =========================
+# Helper Function
+# =========================
+def run_command(cmd):
+    print(f"Running: {cmd}")
+    result = subprocess.run(cmd, shell=True, capture_output=True, text=True)
+    if result.returncode != 0:
+        print(f"Error: {result.stderr}")
+    else:
+        print(result.stdout)
+    return result.returncode
+
+# =========================
+# Main Flow
+# =========================
+def main():
+    print("=== Git Auto Commit & Push Script ===")
+    
+    # Stage all new files
+    for file in FILES_TO_COMMIT:
+        run_command(f"git add {file}")
+    
+    # Commit changes
+    run_command(f'git commit -m "{COMMIT_MESSAGE}"')
+    
+    # Push to remote branch
+    run_command(f"git push origin {BRANCH}")
+    
+    print("\n✅ All 5 new files committed and pushed successfully!")
+
+if __name__ == "__main__":
+    main()
