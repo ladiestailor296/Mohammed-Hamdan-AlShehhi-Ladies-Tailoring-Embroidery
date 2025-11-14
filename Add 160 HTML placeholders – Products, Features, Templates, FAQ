@@ -1,0 +1,148 @@
+# generate-html-placeholders.py
+import os
+
+# Folder jahan files save karni hain
+folders = {
+    "products": "products_pages",
+    "features": "features_pages",
+    "templates": "templates_pages",
+    "faq": "faq_pages"
+}
+
+# Firebase Project info
+firebase_info = "Firebase Project: com.embroidery.jalabiya"
+
+# Create folders if not exist
+for folder in folders.values():
+    os.makedirs(folder, exist_ok=True)
+
+# --- Products: product-51.html → product-100.html ---
+for i in range(51, 101):
+    filename = f"product-{i}.html"
+    filepath = os.path.join(folders["products"], filename)
+    with open(filepath, "w", encoding="utf-8") as f:
+        f.write(f"""<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Product {i} – Mohammed Hamdan AlShehhi</title>
+<link rel="stylesheet" href="style-professional.css">
+<!-- {firebase_info} -->
+</head>
+<body>
+<header>
+<h1>Mohammed Hamdan AlShehhi – Product {i}</h1>
+<p>Professional Ladies Tailoring & Embroidery | Dubai</p>
+</header>
+
+<section>
+<h2>Product {i} Details</h2>
+<p>Placeholder for product images, description, pricing, and 3D viewer.</p>
+</section>
+
+<footer>
+<p>© Mohammed Hamdan AlShehhi | Dubai</p>
+</footer>
+</body>
+</html>
+""")
+    print(f"Created {filename}")
+
+# --- Features: feature-1.html → feature-50.html ---
+for i in range(1, 51):
+    filename = f"feature-{i}.html"
+    filepath = os.path.join(folders["features"], filename)
+    with open(filepath, "w", encoding="utf-8") as f:
+        f.write(f"""<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Feature {i} – Mohammed Hamdan AlShehhi</title>
+<link rel="stylesheet" href="style-professional.css">
+<!-- {firebase_info} -->
+</head>
+<body>
+<header>
+<h1>Feature {i}</h1>
+<p>Placeholder for feature functionality or design module.</p>
+</header>
+
+<section>
+<p>Content placeholder for Feature {i}.</p>
+</section>
+
+<footer>
+<p>© Mohammed Hamdan AlShehhi | Dubai</p>
+</footer>
+</body>
+</html>
+""")
+    print(f"Created {filename}")
+
+# --- Templates: template-1.html → template-50.html ---
+for i in range(1, 51):
+    filename = f"template-{i}.html"
+    filepath = os.path.join(folders["templates"], filename)
+    with open(filepath, "w", encoding="utf-8") as f:
+        f.write(f"""<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Template {i} – Mohammed Hamdan AlShehhi</title>
+<link rel="stylesheet" href="style-professional.css">
+<!-- {firebase_info} -->
+</head>
+<body>
+<header>
+<h1>Template {i}</h1>
+<p>Placeholder for template layout, design, and theme.</p>
+</header>
+
+<section>
+<p>Content placeholder for Template {i}.</p>
+</section>
+
+<footer>
+<p>© Mohammed Hamdan AlShehhi | Dubai</p>
+</footer>
+</body>
+</html>
+""")
+    print(f"Created {filename}")
+
+# --- FAQ: FAQ-1.html → FAQ-10.html ---
+for i in range(1, 11):
+    filename = f"FAQ-{i}.html"
+    filepath = os.path.join(folders["faq"], filename)
+    with open(filepath, "w", encoding="utf-8") as f:
+        f.write(f"""<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FAQ {i} – Mohammed Hamdan AlShehhi</title>
+<link rel="stylesheet" href="style-professional.css">
+<!-- {firebase_info} -->
+</head>
+<body>
+<header>
+<h1>FAQ {i}</h1>
+<p>Placeholder for FAQ content and answers.</p>
+</header>
+
+<section>
+<p>Answer placeholder for FAQ {i}.</p>
+</section>
+
+<footer>
+<p>© Mohammed Hamdan AlShehhi | Dubai</p>
+</footer>
+</body>
+</html>
+""")
+    print(f"Created {filename}")
+
+print("✅ All HTML placeholders (Products, Features, Templates, FAQ) created successfully!")
