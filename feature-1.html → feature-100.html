@@ -1,0 +1,33 @@
+# Firebase info
+firebase_info = "Firebase Project: com.embroidery.jalabiya"
+
+# Feature numbers
+start_feature = 1
+end_feature = 100
+
+for i in range(start_feature, end_feature + 1):
+    filename = f"feature-{i}.html"
+    filepath = os.path.join(features_folder, filename)
+    
+    # HTML content
+    html_content = f"""<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Feature {i} – Mohammed Hamdan AlShehhi</title>
+<link rel="stylesheet" href="../styles_config/style-professional.css">
+<!-- {firebase_info} -->
+</head>
+<body>
+<header><h1>Feature {i}</h1></header>
+<section><p>Placeholder for feature {i} content, modules, and UI examples</p></section>
+<footer>© Mohammed Hamdan AlShehhi | Dubai</footer>
+</body>
+</html>"""
+    
+    # Create file
+    with open(filepath, "w", encoding="utf-8") as f:
+        f.write(html_content)
+    
+    print(f"✅ Created {filename}")
