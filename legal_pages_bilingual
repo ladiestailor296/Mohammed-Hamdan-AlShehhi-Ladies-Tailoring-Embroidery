@@ -1,0 +1,202 @@
+# generate_legal_pages_bilingual.py
+import os
+
+output_folder = "legal_pages_bilingual"
+os.makedirs(output_folder, exist_ok=True)
+
+# English + Arabic templates
+templates = {
+    "privacy_policy_en.html": """
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Privacy Policy - Mohammed Hamdan AlShehhi Ladies Tailoring & Embroidery">
+<title>Privacy Policy</title>
+<style>
+body { font-family: Arial, sans-serif; margin: 40px; line-height: 1.6; background: #f9f9f9; color: #333; }
+h1 { color: #e91e63; }
+.container { max-width: 800px; margin: auto; background: #fff; padding: 30px; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);}
+</style>
+</head>
+<body>
+<div class="container">
+<h1>Privacy Policy</h1>
+<p>Your privacy is important to us. We collect and use your data responsibly to improve your shopping experience.</p>
+<p>Contact: <a href="mailto:ladiestailor293@gmail.com">ladiestailor293@gmail.com</a></p>
+</div>
+</body>
+</html>
+""",
+    "privacy_policy_ar.html": """
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="سياسة الخصوصية - محمد حمدان الشحي لتفصيل وتطريز النساء">
+<title>سياسة الخصوصية</title>
+<style>
+body { font-family: Arial, sans-serif; margin: 40px; line-height: 1.6; background: #f9f9f9; color: #333; }
+h1 { color: #e91e63; }
+.container { max-width: 800px; margin: auto; background: #fff; padding: 30px; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);}
+</style>
+</head>
+<body>
+<div class="container">
+<h1>سياسة الخصوصية</h1>
+<p>خصوصيتك مهمة بالنسبة لنا. نحن نجمع بياناتك ونستخدمها بمسؤولية لتحسين تجربتك في التسوق.</p>
+<p>الاتصال: <a href="mailto:ladiestailor293@gmail.com">ladiestailor293@gmail.com</a></p>
+</div>
+</body>
+</html>
+""",
+    "terms_conditions_en.html": """
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Terms & Conditions - Mohammed Hamdan AlShehhi Ladies Tailoring & Embroidery">
+<title>Terms & Conditions</title>
+<style>
+body { font-family: Arial, sans-serif; margin: 40px; line-height: 1.6; background: #f9f9f9; color: #333; }
+h1 { color: #e91e63; }
+.container { max-width: 800px; margin: auto; background: #fff; padding: 30px; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);}
+</style>
+</head>
+<body>
+<div class="container">
+<h1>Terms & Conditions</h1>
+<p>These terms and conditions govern your use of our website and services.</p>
+<p>Contact: <a href="mailto:ladiestailor293@gmail.com">ladiestailor293@gmail.com</a></p>
+</div>
+</body>
+</html>
+""",
+    "terms_conditions_ar.html": """
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="الأحكام والشروط - محمد حمدان الشحي لتفصيل وتطريز النساء">
+<title>الأحكام والشروط</title>
+<style>
+body { font-family: Arial, sans-serif; margin: 40px; line-height: 1.6; background: #f9f9f9; color: #333; }
+h1 { color: #e91e63; }
+.container { max-width: 800px; margin: auto; background: #fff; padding: 30px; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);}
+</style>
+</head>
+<body>
+<div class="container">
+<h1>الأحكام والشروط</h1>
+<p>تحكم هذه الشروط والأحكام استخدامك لموقعنا وخدماتنا.</p>
+<p>الاتصال: <a href="mailto:ladiestailor293@gmail.com">ladiestailor293@gmail.com</a></p>
+</div>
+</body>
+</html>
+""",
+    "refund_policy_en.html": """
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Refund Policy - Mohammed Hamdan AlShehhi Ladies Tailoring & Embroidery">
+<title>Refund Policy</title>
+<style>
+body { font-family: Arial, sans-serif; margin: 40px; line-height: 1.6; background: #f9f9f9; color: #333; }
+h1 { color: #e91e63; }
+.container { max-width: 800px; margin: auto; background: #fff; padding: 30px; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);}
+</style>
+</head>
+<body>
+<div class="container">
+<h1>Refund Policy</h1>
+<p>We offer refunds under specific conditions. Please contact us for any refund request within 7 days of purchase.</p>
+<p>Contact: <a href="mailto:ladiestailor293@gmail.com">ladiestailor293@gmail.com</a></p>
+</div>
+</body>
+</html>
+""",
+    "refund_policy_ar.html": """
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="سياسة الاسترجاع - محمد حمدان الشحي لتفصيل وتطريز النساء">
+<title>سياسة الاسترجاع</title>
+<style>
+body { font-family: Arial, sans-serif; margin: 40px; line-height: 1.6; background: #f9f9f9; color: #333; }
+h1 { color: #e91e63; }
+.container { max-width: 800px; margin: auto; background: #fff; padding: 30px; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);}
+</style>
+</head>
+<body>
+<div class="container">
+<h1>سياسة الاسترجاع</h1>
+<p>نقدم الاسترجاع وفق شروط محددة. يرجى الاتصال بنا لأي طلب استرجاع خلال 7 أيام من الشراء.</p>
+<p>الاتصال: <a href="mailto:ladiestailor293@gmail.com">ladiestailor293@gmail.com</a></p>
+</div>
+</body>
+</html>
+""",
+    "cookies_policy_en.html": """
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Cookies Policy - Mohammed Hamdan AlShehhi Ladies Tailoring & Embroidery">
+<title>Cookies Policy</title>
+<style>
+body { font-family: Arial, sans-serif; margin: 40px; line-height: 1.6; background: #f9f9f9; color: #333; }
+h1 { color: #e91e63; }
+.container { max-width: 800px; margin: auto; background: #fff; padding: 30px; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);}
+</style>
+</head>
+<body>
+<div class="container">
+<h1>Cookies Policy</h1>
+<p>We use cookies to enhance your experience. You can control cookie settings through your browser.</p>
+<p>Contact: <a href="mailto:ladiestailor293@gmail.com">ladiestailor293@gmail.com</a></p>
+</div>
+</body>
+</html>
+""",
+    "cookies_policy_ar.html": """
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="سياسة الكوكيز - محمد حمدان الشحي لتفصيل وتطريز النساء">
+<title>سياسة الكوكيز</title>
+<style>
+body { font-family: Arial, sans-serif; margin: 40px; line-height: 1.6; background: #f9f9f9; color: #333; }
+h1 { color: #e91e63; }
+.container { max-width: 800px; margin: auto; background: #fff; padding: 30px; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);}
+</style>
+</head>
+<body>
+<div class="container">
+<h1>سياسة الكوكيز</h1>
+<p>نستخدم الكوكيز لتحسين تجربتك. يمكنك التحكم في إعدادات الكوكيز عبر متصفحك.</p>
+<p>الاتصال: <a href="mailto:ladiestailor293@gmail.com">ladiestailor293@gmail.com</a></p>
+</div>
+</body>
+</html>
+"""
+}
+
+# Generate all files
+for filename, content in templates.items():
+    path = os.path.join(output_folder, filename)
+    with open(path, "w", encoding="utf-8") as f:
+        f.write(content)
+    print(f"✅ Created {filename}")
+
+print("\n🎉 All English & Arabic legal and policy HTML files created in folder:", output_folder)
