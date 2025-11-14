@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Connect with us and enjoy professional ads targeting Arabic audience (UAE/KSA/GCC)">
+<title>Social & Ads Integration</title>
+
+<!-- ========== GOOGLE ADSENSE ========== -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXX"
+crossorigin="anonymous"></script>
+
+<!-- ========== META PIXEL ========== -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window,document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+
+fbq('init', 'YOUR_META_PIXEL_ID');
+fbq('track', 'PageView', {language: 'ar', region: 'UAE'});
+</script>
+
+<!-- ========== TIKTOK ADS PIXEL ========== -->
+<script>
+!function(w,d,t){
+  w.TiktokAnalyticsObject=t;
+  var ttq=w[t]=w[t]||[];
+  ttq.methods=["page","track","identify"];
+  ttq.setAndDefer=function(obj,method){
+    obj[method]=function(){obj.push([method].concat(Array.prototype.slice.call(arguments,0)));};
+  };
+  for(var i=0;i<ttq.methods.length;i++){ttq.setAndDefer(ttq,ttq.methods[i]);}
+  ttq.load=function(pix){
+    var u="https://analytics.tiktok.com/i18n/pixel/events.js";
+    ttq._i=ttq._i||{};ttq._i[pix]=[];
+    var e=d.createElement("script");e.async=!0;e.src=u+"?sdkid="+pix+"&lib="+t;
+    var s=d.getElementsByTagName('script')[0];s.parentNode.insertBefore(e,s);
+  };
+  ttq.load('YOUR_TIKTOK_PIXEL_ID');
+  ttq.page({language:"ar", region:"GCC"});
+}(window,document,'ttq');
+</script>
+
+<!-- ========== SNAPCHAT PIXEL ========== -->
+<script type="text/javascript">
+(function(w,d){
+ if(w.snaptr)return;var s=w.snaptr=function(){s.handleRequest?
+ s.handleRequest.apply(s,arguments):s.queue.push(arguments)};
+ s.queue=[];var e=d.createElement('script');e.async=!0;
+ e.src='https://sc-static.net/scevent.min.js';
+ var n=d.getElementsByTagName('script')[0];
+ n.parentNode.insertBefore(e,n);
+})(window,document);
+
+snaptr('init','YOUR_SNAP_PIXEL_ID');
+snaptr('track','PAGE_VIEW',{lang:"ar",country:"AE"});
+</script>
+
+<!-- ========== STYLES ========== -->
+<style>
+body {
+    font-family: Arial, sans-serif;
+    background: #f9f9f9;
+    margin: 20px;
+    color: #333;
+}
+.social-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-bottom: 25px;
+}
+.social-buttons a {
+    padding: 12px 20px;
+    border-radius: 8px;
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    display: inline-block;
+}
+.social-buttons a[href*="wa.me"] { background-color: #25D366; } /* WhatsApp green */
+.social-buttons a[href*="facebook"] { background-color: #3b5998; }
+.social-buttons a[href*="instagram"] { background-color: #E1306C; }
+.social-buttons a[href*="snapchat"] { background-color: #FFFC00; color:#000; }
+.social-buttons a[href*="tiktok"] { background-color: #000; }
+.social-buttons a[href*="youtube"] { background-color: #FF0000; }
+
+.ad-box {
+    width: 100%;
+    min-height: 250px;
+    background: #f8f8f8;
+    border-radius: 16px;
+    margin: 20px 0;
+    padding: 10px;
+    text-align:center;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-family: Arial, sans-serif;
+    font-size:14px;
+    color:#999;
+}
+</style>
+
+</head>
+<body>
+
+<h1>Connect & Follow / تواصل معنا</h1>
+
+<div class="social-buttons">
+    <a href="https://wa.me/YOUR_NUMBER" target="_blank">WhatsApp</a>
+    <a href="https://www.facebook.com/YOUR_PAGE" target="_blank">Facebook</a>
+    <a href="https://www.instagram.com/YOUR_PAGE" target="_blank">Instagram</a>
+    <a href="https://www.snapchat.com/add/YOUR_SNAP" target="_blank">Snapchat</a>
+    <a href="https://www.tiktok.com/@YOUR_TIKTOK" target="_blank">TikTok</a>
+    <a href="https://www.youtube.com/c/YOUR_CHANNEL" target="_blank">YouTube</a>
+</div>
+
+<!-- Example ad slot -->
+<div class="ad-box">
+    🔸 Your Smart Ad Will Appear Here (Dynamic Arabic Audience)
+</div>
+
+<!-- ========== PROFESSIONAL AD OPTIMIZATION SCRIPT ========== -->
+<script>
+function optimizeAds() {
+    console.log("Smart Ads Optimization Running…");
+
+    setInterval(() => {
+        const adSlots = document.querySelectorAll('.ad-box');
+        adSlots.forEach(slot => {
+            slot.innerHTML = '<ins class="adsbygoogle" style="display:block" data-ad-format="auto"></ins>';
+        });
+        (adsbygoogle = window.adsbygoogle || []).push({});
+    }, 45000);
+
+    const interest = localStorage.getItem("interest_category");
+    console.log("User interest:", interest);
+}
+
+function trackEvent(eventName, details) {
+    fbq('track', eventName, details);
+    ttq.track(eventName, details);
+    snaptr('track', eventName.toUpperCase(), details);
+}
+
+function trackProductView(product_id, name, price) {
+    trackEvent("ViewContent", {product_id, name, price});
+}
+
+function trackAddToCart(product_id, price) {
+    trackEvent("AddToCart", {product_id, price});
+}
+
+function trackPurchase(order_id, amount) {
+    trackEvent("Purchase", {order_id, value: amount, currency: "AED"});
+}
+
+function boostArabicAds() {
+    const lang = navigator.language || navigator.userLanguage;
+    if (lang.includes("ar")) {
+        document.body.classList.add("arabic-user");
+        console.log("Arabic Audience Boost Active");
+    }
+}
+
+document.addEventListener("DOMContentLoaded", function() {
+    optimizeAds();
+    boostArabicAds();
+});
+</script>
+
+</body>
+</html>
