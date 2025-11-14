@@ -1,0 +1,42 @@
+import os
+
+# Folder setup
+products_folder = "products_pages"
+os.makedirs(products_folder, exist_ok=True)
+
+firebase_info = "Firebase Project: com.embroidery.jalabiya"
+
+# Generate 150 product pages
+for i in range(1, 151):
+    filename = f"product-{i}.html"
+    filepath = os.path.join(products_folder, filename)
+    
+    html_content = f"""<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Product {i} – Mohammed Hamdan AlShehhi</title>
+<link rel="stylesheet" href="../styles_config/style-professional.css">
+<!-- {firebase_info} -->
+</head>
+<body>
+<header>
+  <h1>Product {i}</h1>
+</header>
+<section>
+  <p>Placeholder for product {i} details, images, pricing, 3D viewer</p>
+  <!-- Add images, descriptions, 3D viewer, price dynamically -->
+</section>
+<footer>
+  © Mohammed Hamdan AlShehhi | Dubai
+</footer>
+</body>
+</html>"""
+    
+    with open(filepath, "w", encoding="utf-8") as f:
+        f.write(html_content)
+    
+    print(f"✅ Created {filename}")
+
+print("🎉 All 150 Products HTML files created successfully!")
